@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assine a Carteira de Trabalho</title>
+    <style>
+        /* Fundo com a imagem da Carteira de Trabalho */
+        body {
+            background-image: url('clt.jpeg'); /* Substitua pelo caminho correto */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Caixa da "carteira aberta" */
+        #carteira {
+            width: 300px;
+            height: 400px;
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        /* Quando a carteira está aberta */
+        #carteira.aberta {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Botão e campo de assinatura */
+        button, input {
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input {
+            width: 80%;
+            text-align: center;
+        }
+
+        /* Texto de assinatura */
+        #assinatura {
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Elemento da carteira e assinatura -->
+    <div id="carteira">
+        <h2>Assine seu nome</h2>
+        <input type="text" id="nome" placeholder="Digite seu nome">
+        <button onclick="assinar()">Assinar</button>
+        <div id="assinatura"></div>
+    </div>
+
+    <!-- Botão para abrir a carteira -->
+    <button onclick="abrirCarteira()">Abrir Carteira</button>
+
+    <script>
+        // Função para abrir a carteira
+        function abrirCarteira() {
+            document.getElementById('carteira').classList.add('aberta');
+        }
+
+        // Função para adicionar a assinatura
+        function assinar() {
+            const nome = document.getElementById('nome').value;
+            document.getElementById('assinatura').innerText = `Assinado: ${nome}`;
+        }
+    </script>
+</body>
+</html>
+
